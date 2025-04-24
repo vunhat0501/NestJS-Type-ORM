@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { PropertyModule } from './property/property.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { UserModule } from './user/user.module';
 import dbConfig from 'src/config/db.config';
 import dbConfigProduction from 'src/config/db.config.production';
 
@@ -21,6 +22,7 @@ import dbConfigProduction from 'src/config/db.config.production';
 					? dbConfigProduction
 					: dbConfig,
 		}),
+		UserModule,
 	],
 	controllers: [AppController],
 	providers: [AppService],
