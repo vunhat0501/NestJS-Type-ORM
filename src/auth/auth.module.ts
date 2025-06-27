@@ -13,19 +13,19 @@ import refreshJwtConfig from 'src/auth/config/refresh-jwt.config';
 import { RefreshJwtStrategy } from 'src/auth/strategies/refresh.strategy';
 
 @Module({
-	imports: [
-		TypeOrmModule.forFeature([User]),
-		JwtModule.registerAsync(jwtConfig.asProvider()),
-		ConfigModule.forFeature(jwtConfig),
-		ConfigModule.forFeature(refreshJwtConfig),
-	],
-	controllers: [AuthController],
-	providers: [
-		AuthService,
-		UserService,
-		LocalStrategy,
-		JwtStrategy,
-		RefreshJwtStrategy,
-	],
+  imports: [
+    TypeOrmModule.forFeature([User]),
+    JwtModule.registerAsync(jwtConfig.asProvider()),
+    ConfigModule.forFeature(jwtConfig),
+    ConfigModule.forFeature(refreshJwtConfig),
+  ],
+  controllers: [AuthController],
+  providers: [
+    AuthService,
+    UserService,
+    LocalStrategy,
+    JwtStrategy,
+    RefreshJwtStrategy,
+  ],
 })
 export class AuthModule {}

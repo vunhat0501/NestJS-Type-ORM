@@ -7,37 +7,41 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class UserService {
-	constructor(@InjectRepository(User) private UserRepo: Repository<User>) {}
+  constructor(@InjectRepository(User) private UserRepo: Repository<User>) {}
 
-	async create(createUserDto: CreateUserDto) {
-		const user = await this.UserRepo.create(createUserDto);
-		return await this.UserRepo.save(user);
-	}
+  async updateHashedRefreshToken(userId: number, hashedRefreshToken: string) {
+    return await this.UserRepo.update({ id: userId }, { hashedRefreshToken });
+  }
 
-	async findByEmail(email: string) {
-		return await this.UserRepo.findOne({
-			where: {
-				email: email,
-			},
-		});
-	}
+  async create(createUserDto: CreateUserDto) {
+    const user = await this.UserRepo.create(createUserDto);
+    return await this.UserRepo.save(user);
+  }
 
-	findAll() {
-		return `This action returns all user`;
-	}
+  async findByEmail(email: string) {
+    return await this.UserRepo.findOne({
+      where: {
+        email: email,
+      },
+    });
+  }
 
-	async findOne(id: number) {
-		return this.UserRepo.findOne({
-			where: { id },
-			select: ['firstName', 'lastName', 'avatarUrl'],
-		});
-	}
+  findAll() {
+    return `This action returns all user`;
+  }
 
-	update(id: number, updateUserDto: UpdateUserDto) {
-		return `This action updates a #${id} user`;
-	}
+  async findOne(id: number) {
+    return this.UserRepo.findOne({
+      where: { id },
+      select: ['firstName', 'lastName', 'avatarUrl', 'hashedRefreshToken'],
+    });
+  }
 
-	remove(id: number) {
-		return `This action removes a #${id} user`;
-	}
+  update(id: number, updateUserDto: UpdateUserDto) {
+    return `This action updates a #${id} user`;
+  }
+
+  remove(id: number) {
+    return `This action removes a #${id} user`;
+  }
 }
