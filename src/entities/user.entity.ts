@@ -11,6 +11,7 @@ import {
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { Optional } from '@nestjs/common';
+import { Role } from 'src/auth/enums/role.enum';
 
 @Entity()
 export class User {
@@ -35,6 +36,13 @@ export class User {
 
   @Column({ nullable: true })
   password: string;
+
+  @Column({
+    type: 'enum',
+    enum: Role,
+    default: Role.USER,
+  })
+  role: Role;
 
   @Column({ nullable: true })
   hashedRefreshToken: string;

@@ -33,7 +33,13 @@ export class UserService {
   async findOne(id: number) {
     return this.UserRepo.findOne({
       where: { id },
-      select: ['firstName', 'lastName', 'avatarUrl', 'hashedRefreshToken'],
+      select: [
+        'firstName',
+        'lastName',
+        'avatarUrl',
+        'hashedRefreshToken',
+        'role',
+      ],
     });
   }
 

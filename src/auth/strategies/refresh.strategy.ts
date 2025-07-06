@@ -26,7 +26,7 @@ export class RefreshJwtStrategy extends PassportStrategy(
   }
 
   //** Refresh token is in the field calls Authorization with value start with Bearer
-  // Authorization: Bearer jajdfhdjhjajdfhdjdksfjsjsjsd */
+  // Authorization: Bearer a_very_long_string_of__not_hash_token */
 
   validate(req: Request, payload: AuthJwtPayload) {
     // Extract the refresh token from the request headers
