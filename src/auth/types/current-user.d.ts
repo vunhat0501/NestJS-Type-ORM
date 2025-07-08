@@ -1,6 +1,6 @@
 import { Role } from 'src/auth/enums/role.enum';
 
 export type CurrentUser = {
-  id: number;
-  role: Role;
+	id: number;
+	role: Role;
 };

@@ -8,4 +8,4 @@ export const ROLE_KEY = 'roles';
 
 //** Set roles in metadata as an array so that the role can't be null */
 export const Roles = (...roles: [Role, ...Role[]]) =>
-  SetMetadata(ROLE_KEY, roles);
+	SetMetadata(ROLE_KEY, roles);

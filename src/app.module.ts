@@ -10,21 +10,21 @@ import dbConfig from 'src/config/db.config';
 import dbConfigProduction from 'src/config/db.config.production';
 
 @Module({
-  imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
-      expandVariables: true,
-      load: [dbConfig, dbConfigProduction],
-    }),
-    PropertyModule,
-    TypeOrmModule.forRootAsync({
-      useFactory:
-        process.env.NODE_ENV === 'production' ? dbConfigProduction : dbConfig,
-    }),
-    UserModule,
-    AuthModule,
-  ],
-  controllers: [AppController],
-  providers: [AppService],
+	imports: [
+		ConfigModule.forRoot({
+			isGlobal: true,
+			expandVariables: true,
+			load: [dbConfig, dbConfigProduction],
+		}),
+		PropertyModule,
+		TypeOrmModule.forRootAsync({
+			useFactory:
+				process.env.NODE_ENV === 'production' ? dbConfigProduction : dbConfig,
+		}),
+		UserModule,
+		AuthModule,
+	],
+	controllers: [AppController],
+	providers: [AppService],
 })
 export class AppModule {}

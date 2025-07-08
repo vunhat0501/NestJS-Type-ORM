@@ -1,40 +1,40 @@
 import { Property } from 'src/entities/property.entity';
 import {
-  Column,
-  Entity,
-  JoinColumn,
-  OneToOne,
-  PrimaryGeneratedColumn,
+	Column,
+	Entity,
+	JoinColumn,
+	OneToOne,
+	PrimaryGeneratedColumn,
 } from 'typeorm';
 
 @Entity()
 export class PropertyFeature {
-  @PrimaryGeneratedColumn()
-  id: number;
+	@PrimaryGeneratedColumn()
+	id: number;
 
-  @Column()
-  bathrooms: number;
+	@Column()
+	bathrooms: number;
 
-  @Column()
-  bedrooms: number;
+	@Column()
+	bedrooms: number;
 
-  @Column()
-  parkingSpots: number;
+	@Column()
+	parkingSpots: number;
 
-  @Column()
-  area: number;
+	@Column()
+	area: number;
 
-  @Column()
-  hasBalcony: boolean;
+	@Column()
+	hasBalcony: boolean;
 
-  @Column()
-  hasGardenYard: boolean;
+	@Column()
+	hasGardenYard: boolean;
 
-  @Column()
-  hasSwimmingPool: boolean;
+	@Column()
+	hasSwimmingPool: boolean;
 
-  //** OPTIONAL: reverse call back to bi-access */
-  @OneToOne(() => Property, (property) => property.propertyFeature)
-  @JoinColumn()
-  property: Property;
+	//** OPTIONAL: reverse call back to bi-access */
+	@OneToOne(() => Property, (property) => property.propertyFeature)
+	@JoinColumn()
+	property: Property;
 }

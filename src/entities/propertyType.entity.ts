@@ -3,12 +3,12 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class PropertyType {
-  @PrimaryGeneratedColumn()
-  id: number;
+	@PrimaryGeneratedColumn()
+	id: number;
 
-  @Column()
-  value: string;
+	@Column()
+	value: string;
 
-  @OneToMany(() => Property, (property) => property.type)
-  properties: Property[];
+	@OneToMany(() => Property, (property) => property.type)
+	properties: Property[];
 }
